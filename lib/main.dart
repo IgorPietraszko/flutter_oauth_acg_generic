@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'dart:core';
 
@@ -23,13 +24,35 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {  
 
+  String _authorizationCode;
+
+  static const platform = const MethodChannel('flutter_oauth_acg_generic/authorize');
+
+  @override
+  void initState() {
+    platform.setMethodCallHandler((MethodCall call) {
+      assert(call.method == "authorize");
+      handleAuthenticationResult(call.arguments);
+    });
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-      body: new Center(
-        child: new RaisedButton(
-          child: new Text("Log in"),
-          onPressed: () => authenticate(),
+      body: new Center(        
+        child: Column(                    
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            new RaisedButton(
+              child: new Text("Log in"),
+              onPressed: () => authenticate(),
+            ),
+            new Padding(
+              padding: EdgeInsets.only(top: 8.0),
+              child: new Text('$_authorizationCode' ))
+          ],
         ),
       ),
     );
@@ -54,5 +77,9 @@ class _MyHomePageState extends State<MyHomePage> {
     } else {
       throw 'Could not launch $url';
     }
+  }
+
+  void handleAuthenticationResult(String authorizationCode){
+    setState(() {_authorizationCode = authorizationCode; });
   }
 }
