@@ -39,7 +39,7 @@
                 <action android:name="android.intent.action.VIEW"/>
                 <category android:name="android.intent.category.DEFAULT"/>
                 <category android:name="android.intent.category.BROWSABLE"/>
-                <data android:scheme="com.atco.oauthdemo://oauth/redirect"/>
+                <data android:scheme="msal11fcfedd-70a6-4e24-9970-82c641a61fd2://auth"/>
             </intent-filter>
 
         </activity>
