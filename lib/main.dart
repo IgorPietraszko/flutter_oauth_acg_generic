@@ -41,7 +41,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return new Scaffold(
       body: new Center(        
-        child: Column(                    
+        child: new Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
@@ -49,9 +49,7 @@ class _MyHomePageState extends State<MyHomePage> {
               child: new Text("Log in"),
               onPressed: () => authenticate(),
             ),
-            new Padding(
-              padding: EdgeInsets.only(top: 8.0),
-              child: new Text('$_authorizationCode' ))
+            new Text('$_authorizationCode')
           ],
         ),
       ),
