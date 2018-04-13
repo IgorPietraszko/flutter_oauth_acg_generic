@@ -59,9 +59,10 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   authenticate() async {
-  
-    final String clientId = "25843db0-0ff3-4227-9ca5-2353a0de8a92";
-    final String redirectUri = "com.atco.oauthdemo://oauth/redirect";
+
+    // Wipro Programme Status Registration
+    final String clientId = "11fcfedd-70a6-4e24-9970-82c641a61fd2";
+    final String redirectUri = "msal11fcfedd-70a6-4e24-9970-82c641a61fd2://auth";
     final String scope = "User.Read";
     
     final url = Uri.parse(
